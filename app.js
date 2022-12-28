@@ -59,19 +59,30 @@ app.route('/articles')
     }
 );
 
+app.route("/articles/:articleTitle")
 
-// app.delete('/articles', function (req,res){
-//     const _id = req.body._id;
+.get(function(req,res){
+    const articleTitle = req.params.articleTitle;
 
-//     Articles.findByIdAndRemove(_id,function(err){
-//         if (!err){
-//             res.send("Article deleted");
-//         }else{
-//             res.send(err);
-//         }
-//     })
+    Articles.findOne({title: articleTitle},function(err,foundArticle){
+        if (!err){
+            res.send(foundArticle);
+        }else{
+            res.send(err);
+        }
+    })
+})
 
-// });
+.put(function(req,res){
+    const articleTitle = req.params.articleTitle;
+
+    Articles.update({
+        title: articleTitle
+    },{},{},function(err,result){
+
+    });
+});
+
 
 app.listen("3000",()=>{
     console.log("server started at http://localhost:3000");
