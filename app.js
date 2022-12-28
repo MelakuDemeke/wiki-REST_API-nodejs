@@ -83,8 +83,32 @@ app.route("/articles/:articleTitle")
             if (!err){
                 res.send("article "+ articleTitle + " is updated");
             } else{
-                res.send("error");
+                res.send(err);
             }
+    });
+})
+
+.patch(function(req,res){
+    const articleTitle = req.params.articleTitle;
+    Articles.updateOne(
+        {title: articleTitle},
+        {$set: req.body},
+        function(err,result){
+            if (!err){
+                res.send("article "+ articleTitle + " is updated");
+            } else{
+                res.send(err);
+            }
+    });
+})
+.delete(function(req,res){
+    const articleTitle = req.params.articleTitle;
+    Articles.deleteOne({title: articleTitle},function(err){
+        if (!err){
+            res.send("article "+ articleTitle +" is removed");
+        }else{
+            res.send(err);
+        }
     });
 });
 
