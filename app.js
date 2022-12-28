@@ -76,10 +76,15 @@ app.route("/articles/:articleTitle")
 .put(function(req,res){
     const articleTitle = req.params.articleTitle;
 
-    Articles.update({
-        title: articleTitle
-    },{},{},function(err,result){
-
+    Articles.updateOne(
+        {title: articleTitle},
+        {$set: {title: req.body.title,content: req.body.content}},
+        function(err,result){
+            if (!err){
+                res.send("article "+ articleTitle + " is updated");
+            } else{
+                res.send("error");
+            }
     });
 });
 
