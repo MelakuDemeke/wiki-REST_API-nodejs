@@ -18,7 +18,7 @@ This is a simple frontend project which is built while learning full-stack web d
 ## In this project, I learn
 - What is an API and What is a REST API 
 - The 6 constraints of a REST Architecture
-- How to make HTTP calls (GET, POST, PUT, DELETE)
+- How to make HTTP calls (GET, POST, PUT, DELETE, PATCH)
 - API Security - Authentication & Authorization
 - API Versioning & Deprecation Strategies 
 - Error Handling 
